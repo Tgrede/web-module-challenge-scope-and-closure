@@ -68,7 +68,11 @@ function inning(){
     return Math.floor(Math.random() * 3);
   }
 }
-const randomNumber = inning()
+const randomNumber = inning();
+console.log(inning);
+console.log(inning());
+console.log(randomNumber);
+console.log(randomNumber())
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -85,24 +89,19 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-
-function finalScore(randomNumber, inningsPlayed){
+function finalScore(callBack, inningsPlayed){
   const score = {
     home: 0,
     away: 0
   };
-
-  for(let i = 0; i < inningsPlayed; i++){
-    score.home += randomNumber();
-    score.away += randomNumber();
+  for(let i = 1; i <= inningsPlayed; i++){
+    score.home += callBack();
+    score.away += callBack();
   }
-
   return score;
 }
-console.log(finalScore(inning(),9))
-console.log(finalScore(inning(),9))
-console.log(finalScore(inning(),9))
-console.log(finalScore(inning(),9))
+
+
 
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
@@ -110,19 +109,23 @@ Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(randomNumber) {
+
+function getInningScore(callBack){
   const score = {
-    home: 0,
-    away: 0
-  };
-  score.home += randomNumber();
-  score.away += randomNumber();
+    home: callBack(),
+    away: callBack()
+  }
   return score;
 }
-console.log(getInningScore(inning()));
-console.log(getInningScore(inning()));
-console.log(getInningScore(inning()));
-console.log(getInningScore(inning()));
+console.log(getInningScore(randomNumber));
+console.log(getInningScore(randomNumber));
+console.log(getInningScore(randomNumber));
+console.log(getInningScore(randomNumber));
+console.log(getInningScore(randomNumber));
+console.log(getInningScore(randomNumber));
+
+
+// const inningScore = getInningScore()
 
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -166,9 +169,13 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
+// function scoreboard(inningScore, randomNumber, inningsPlayed) {
+  
+// }
+
+// function scoreboard(/* CODE HERE */) {
+//   /* CODE HERE */
+// }
 
 
 
