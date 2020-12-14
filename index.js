@@ -28,11 +28,13 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
+  counter1 uses a closure.
   
   2. Which of the two uses a closure? How can you tell?
+  counter1 uses the closure because it returns a function.
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
-     counter2 be better?  
+     counter2 be better?  counter1 code is preferable when you want independent counters. counter2 is preferable when you want a global count variable to  go up.
 */
 
 // counter1 code
@@ -62,8 +64,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+    return Math.floor(Math.random() * 3);
 }
 
 
@@ -148,13 +150,13 @@ function foo(){
   //console.log('its working');
   return 'bar';
 }
-export default{
-  foo,
-  processFirstItem,
-  counter1,
-  counter2,
-  inning,
-  finalScore,
-  getInningScore,
-  scoreboard,
-}
+// export default{
+//   foo,
+//   processFirstItem,
+//   counter1,
+//   counter2,
+//   inning,
+//   finalScore,
+//   getInningScore,
+//   scoreboard,
+// }
