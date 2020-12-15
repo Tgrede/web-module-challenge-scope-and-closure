@@ -43,6 +43,8 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+closure is when functions can access the variables outside of it but the variables in the outer function are closed off from inner functions. 
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -64,8 +66,13 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+closure is used when the ${name} gets access to the name passed into personalDice but we would not be able to access newRoll from outside the inner function.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+nothing changed?
+
 c. What is the lexical scope of `newRoll`? 
+block scope, only accessible within the function
 
 
 ### Task 3 - Stretch Goals
