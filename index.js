@@ -69,10 +69,6 @@ function inning(){
   }
 }
 const randomNumber = inning();
-console.log(inning);
-console.log(inning());
-console.log(randomNumber);
-console.log(randomNumber())
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -102,30 +98,25 @@ function finalScore(callBack, inningsPlayed){
 }
 
 
-
-
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
 
-function getInningScore(callBack){
-  const score = {
-    home: callBack(),
-    away: callBack()
+function getInningScore(){
+  return function(callBack){
+    const score = {
+      home: callBack(),
+      away: callBack()
+    }
+    return score;
   }
-  return score;
 }
-console.log(getInningScore(randomNumber));
-console.log(getInningScore(randomNumber));
-console.log(getInningScore(randomNumber));
-console.log(getInningScore(randomNumber));
-console.log(getInningScore(randomNumber));
-console.log(getInningScore(randomNumber));
+
+const inningScore = getInningScore()
 
 
-// const inningScore = getInningScore()
 
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -169,13 +160,25 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-// function scoreboard(inningScore, randomNumber, inningsPlayed) {
-  
-// }
-
-// function scoreboard(/* CODE HERE */) {
-//   /* CODE HERE */
-// }
+ function scoreboard(callInningScore,callInning,inningsPlayed) {
+  const scoresArr = [];
+  let home = 0;
+  let away = 0;
+  for(let i = 1; i <= inningsPlayed; i++) {
+    const inningScore = callInningScore(callInning);
+    home += inningScore.home;
+    away += inningScore.away; 
+    scoresArr.push(`Inning ${i}: Away ${away} - Home ${home}`);
+  }
+  if(home != away){
+    scoresArr.push(`Final Score: Away ${away} - Home ${home}`)
+  }
+  else{
+    scoresArr.push(`This game will require extra innings: Away ${away} - Home ${home}`)
+  }
+  return scoresArr
+ }
+ console.log(scoreboard(inningScore,randomNumber,9));
 
 
 
@@ -185,13 +188,13 @@ function foo(){
   //console.log('its working');
   return 'bar';
 }
-// export default{
-//   foo,
-//   processFirstItem,
-//   counter1,
-//   counter2,
-//   inning,
-//   finalScore,
-//   getInningScore,
-//   scoreboard,
-// }
+export default{
+  foo,
+  processFirstItem,
+  counter1,
+  counter2,
+  inning,
+  finalScore,
+  getInningScore,
+  scoreboard,
+}
