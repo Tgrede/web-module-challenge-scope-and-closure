@@ -64,11 +64,15 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 function inning(){
-  return function(){
-    return Math.floor(Math.random() * 3);
-  }
+  return Math.floor(Math.random() * 3);
 }
-const randomNumber = inning();
+
+// function inning(){
+//   return function(){
+//     return Math.floor(Math.random() * 3);
+//   }
+// }
+// const randomNumber = inning();
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -87,8 +91,8 @@ Use the finalScore function below to do the following:
 
 function finalScore(callBack, inningsPlayed){
   const score = {
-    home: 0,
-    away: 0
+    Home: 0,
+    Away: 0
   };
   for(let i = 1; i <= inningsPlayed; i++){
     score.home += callBack();
@@ -98,24 +102,22 @@ function finalScore(callBack, inningsPlayed){
 }
 
 
+
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
 
-function getInningScore(){
-  return function(callBack){
-    const score = {
-      home: callBack(),
-      away: callBack()
-    }
-    return score;
+
+  function getInningScore(callBack){   
+      const score = {
+        Home: callBack(),
+        Away: callBack()
+      }
+      return score;
   }
-}
-
-const inningScore = getInningScore()
-
+  
 
 
 
@@ -160,25 +162,50 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
- function scoreboard(callInningScore,callInning,inningsPlayed) {
-  const scoresArr = [];
-  let home = 0;
-  let away = 0;
-  for(let i = 1; i <= inningsPlayed; i++) {
-    const inningScore = callInningScore(callInning);
-    home += inningScore.home;
-    away += inningScore.away; 
-    scoresArr.push(`Inning ${i}: Away ${away} - Home ${home}`);
-  }
-  if(home != away){
-    scoresArr.push(`Final Score: Away ${away} - Home ${home}`)
-  }
-  else{
-    scoresArr.push(`This game will require extra innings: Away ${away} - Home ${home}`)
-  }
-  return scoresArr
- }
- console.log(scoreboard(inningScore,randomNumber,9));
+
+//  function scoreboard(callInningScore,callInning,inningsPlayed) {
+//   const scoresArr = [];
+//   let home = 0;
+//   let away = 0;
+//   for(let i = 1; i <= inningsPlayed; i++) {
+//     const inningScore = callInningScore(callInning);
+//     home += inningScore.home;
+//     away += inningScore.away; 
+//     scoresArr.push(`Inning ${i}: Away ${away} - Home ${home}`);
+//   }
+//   if(home != away){
+//     scoresArr.push(`Final Score: Away ${away} - Home ${home}`)
+//   }
+//   else{
+//     scoresArr.push(`This game will require extra innings: Away ${away} - Home ${home}`)
+//   }
+//   return scoresArr
+//  }
+
+
+
+
+
+
+//  function scoreboard(callInningScore,callInning,inningsPlayed) {
+//   const scoresArr = [];
+//   let home = 0;
+//   let away = 0;
+//   for(let i = 1; i <= inningsPlayed; i++) {
+    
+//     home += callInningScore(callInning).home;
+//     away += callInningScore(callInning).away; 
+//     scoresArr.push(`Inning ${i}: Away ${away} - Home ${home}`);
+//   }
+//   if(home != away){
+//     scoresArr.push(`Final Score: Away ${away} - Home ${home}`)
+//   }
+//   else{
+//     scoresArr.push(`This game will require extra innings: Away ${away} - Home ${home}`)
+//   }
+//   return scoresArr
+//  }
+//  console.log(scoreboard(getInningScore(),inning(),9));
 
 
 
@@ -196,5 +223,5 @@ export default{
   inning,
   finalScore,
   getInningScore,
-  scoreboard,
+ // scoreboard,
 }
